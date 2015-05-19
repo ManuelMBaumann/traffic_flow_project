@@ -6,4 +6,4 @@ This task deals with simplified 1D traffic flow modeled by the non-linear Burger
 Note that two different versions of the task have been designed. If you are an instructor interested in a solution sheet (and Matlab codes), please write to [me].
 
 [text book]: http://www.vssd.nl/hlf/a026.htm
-[me]: M.M.Baumann@tudelft.nl
+[me]: mailto:M.M.Baumann@tudelft.nl
