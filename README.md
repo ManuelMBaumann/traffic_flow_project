@@ -1,4 +1,4 @@
-Student Project Numerical Analysis 1
+Student Project in Numerical Analysis 1
 ====================================
 
 This task deals with simplified 1D traffic flow modeled by the non-linear Burgers' equation. It is designed for a 1-month project work for students of Numerical Analysis 1 at TU Delft. The course is based on this [text book].
