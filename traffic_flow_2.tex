@@ -128,10 +128,12 @@ Derive a semi-discrete matrix formulation of the form,
 \end{align}
 where the vector $\mathbf{r}$ encounters for the boundary conditions, and $\mathbf{f}$ is non-linear. What is the number of unknowns in the vector $\mathbf{u}$?
 
-\textit{Hint: Useful Matlab functions are: } \texttt{linspace, spdiags, u.\^ \! 2, full(A), spy(A)}
+\textit{Hint: Useful Matlab functions are: } \texttt{linspace, spdiags, u.\^ \! 2}\\
+\textit{\phantom{\indent Hint:} Useful Python functions are: } \texttt{numpy.linspace, round, scipy.sparse.spdiags,}\\
+\phantom{\indent \textit{Hint: Useful Python functions are: }} \texttt{numpy.array}
 \section{Time integration}
 \label{ch:euler}
-Write a Matlab code to simulate the problem! Use Forward Euler to integrate \eqref{MOL} in time and set the parameters to the values given in Table \ref{params}. Plot both, the solution $u$ and the car density $\rho$ at every time step. Use a constant time step of $\Delta t = 0.0001$ for now.
+Write a Matlab/Python code to simulate the problem! Use Forward Euler to integrate \eqref{MOL} in time and set the parameters to the values given in Table \ref{params}. Plot both, the solution $u$ and the car density $\rho$ at every time step. Use a constant time step of $\Delta t = 0.0001$ for now.
 \begin{table}[ht]
 \centering
  \begin{tabular}{|c|c|c|c|c|}
@@ -144,7 +146,8 @@ Write a Matlab code to simulate the problem! Use Forward Euler to integrate \eqr
 \caption{Parameter configuration.}\label{params}
 \end{table}
 
-\textit{Hint: Useful Matlab functions are: } \texttt{plot, pause(0.05) }
+\textit{Hint: Useful Matlab functions are: } \texttt{plot, pause(0.05) }\\
+\textit{\phantom{\indent Hint:} Useful Python functions are: } \texttt{plt.plot, plt.draw, plt.pause, fig[0].remove}
 \section{Stability analysis of the linearized equation$^\ast$}
 \label{eq:timestep}
 The simulation with the time step of task \ref{ch:euler} is quite slow. We want to investigate how big the time step can be chosen. Therefore, first play with the parameters $\nu$ and $N,L$ in order to get a feeling.

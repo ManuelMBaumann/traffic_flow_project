@@ -133,9 +133,11 @@ Derive a semi-discrete matrix formulation of the form,
 \end{align}
 where the vector $\mathbf{r}$ encounters for the boundary conditions, and $\mathbf{f}$ is non-linear. What is the number of unknowns in the vector $\mathbf{u}$?
 
-\textit{Hint: Useful Matlab functions are: } \texttt{linspace, round, spdiags, u.\^ \! 2, full(A), spy(A)}
+\textit{Hint: Useful Matlab functions are: } \texttt{linspace, round, spdiags, u.\^ \! 2}\\
+\textit{\phantom{\indent Hint:} Useful Python functions are: } \texttt{numpy.linspace, round, scipy.sparse.spdiags,}\\
+\phantom{\indent \textit{Hint: Useful Python functions are: }} \texttt{numpy.array}
 \section{Time integration}
-Write a Matlab code to simulate the problem! Use Forward Euler to integrate \eqref{MOL} in time and set the parameters to the values given in Table \ref{params}. Plot both, the solution $u$ and the car density $\rho$ at every time step. Do you observe something strange?
+Write a Matlab/Python code to simulate the problem! Use Forward Euler to integrate \eqref{MOL} in time and set the parameters to the values given in Table \ref{params}. Plot both, the solution $u$ and the car density $\rho$ at every time step. Do you observe something strange?
 
 \begin{table}[ht]
 \centering
@@ -148,7 +150,8 @@ Write a Matlab code to simulate the problem! Use Forward Euler to integrate \eqr
  \end{tabular}
 \caption{Parameter configuration.}\label{params}
 \end{table}
-\textit{Hint: Useful Matlab functions are: } \texttt{plot, pause(0.05) }
+\textit{Hint: Useful Matlab functions are: } \texttt{plot, pause(0.05) }\\
+\textit{\phantom{\indent Hint:} Useful Python functions are: } \texttt{plt.plot, plt.draw, plt.pause, fig[0].remove}
 \section{Upwind discretization}
 We now want to avoid the \textit{strangeness} that appears in the previous task. Therefore, note that $u>0$ and replace the central discretization for the first derivative by an upwind scheme. Use the same parameters as before.
 \section{Analysis of upwind scheme$^\ast$}
