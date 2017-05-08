@@ -4,7 +4,7 @@
 \usepackage{tikz}
 \usepackage{hyperref}
 \usepackage[top=90pt,bottom=90pt,left=95pt,right=95pt]{geometry}
-\usepackage{color	}
+\usepackage{color}
 
 \title{\bf One-dimensional traffic flow}
 \author{Project work in Numerical Analysis 1}
@@ -133,7 +133,7 @@ where the vector $\mathbf{r}$ encounters for the boundary conditions, and $\math
 \phantom{\indent \textit{Hint: Useful Python functions are: }} \texttt{numpy.array}
 \section{Time integration}
 \label{ch:euler}
-Write a Matlab/Python code to simulate the problem! Use Forward Euler to integrate \eqref{MOL} in time and set the parameters to the values given in Table \ref{params}. Plot both, the solution $u$ and the car density $\rho$ at every time step. Use a constant time step of $\Delta t = 0.0001$ for now.
+Write a Matlab/Python code to simulate the problem! Use Forward Euler to integrate \eqref{MOL} in time and set the parameters to the values given in Table \ref{params1}. Plot both, the solution $u$ and the car density $\rho$ at every time step. Use a constant time step of $\Delta t = 0.0001$ for now.
 \begin{table}[ht]
 \centering
  \begin{tabular}{|c|c|c|c|c|}
@@ -143,7 +143,7 @@ Write a Matlab/Python code to simulate the problem! Use Forward Euler to integra
   $0.5$ & $100$ & $3.0$ & $5.0$ & task \ref{eq:timestep}\\
   \hline
  \end{tabular}
-\caption{Parameter configuration.}\label{params}
+\caption{Parameter configuration.}\label{params1}
 \end{table}
 
 \textit{Hint: Useful Matlab functions are: } \texttt{plot, pause(0.05) }\\
@@ -160,7 +160,7 @@ The Jacobian is then defined as the matrix $J_{ij} = \frac{\partial g_i}{\partia
 
 \textit{Hint: For the minimum eigenvalue of $J(\mathbf{u}^0)$ you might use Gershgorin's theorem, or review huiswerk \#4.}
 \section{Simulation}
-Integrate the PDE from $t=0$ to $t_e=5$ using the derived time step $\Delta t$ and $\Delta x$ as defined via Table \ref{params}. Also increase your derived time step by $1\%$ which shows that the estimation is \textit{sharp}. What happens if we run the simulation for a very long time?
+Integrate the PDE from $t=0$ to $t_e=5$ using the derived time step $\Delta t$ and $\Delta x$ as defined via Table \ref{params1}. Also increase your derived time step by $1\%$ which shows that the estimation is \textit{sharp}. What happens if we run the simulation for a very long time?
 
 \section{Upwind scheme*}
 Consider the new initial condition 
@@ -177,7 +177,7 @@ together with (new!) boundary conditions,
  u_l(t) = +1, \quad u_r(t) = 0, \quad t \geq 0.
 \]
 
-Again, use Forward Euler for the time integration, and set the parameters to the values given in Table \ref{params}. Plot both, the solution $u$ and the car density $\rho$ at every time step. Do you observe something strange?
+Again, use Forward Euler for the time integration, and set the parameters to the values given in Table \ref{params2}. Plot both, the solution $u$ and the car density $\rho$ at every time step. Do you observe something strange?
 
 \begin{table}[ht]
 \centering
@@ -188,10 +188,10 @@ Again, use Forward Euler for the time integration, and set the parameters to the
   $0.01$ & $100$ & $3.0$ & $5.0$ & $0.003$\\
   \hline
  \end{tabular}
-\caption{Parameter configuration.}\label{params}
+\caption{Parameter configuration.}\label{params2}
 \end{table}
 
-In this task, we want to avoid the \textit{strangeness} that appears when using the code developed in task 1-5. Therefore, note that $u>0$ and replace the central discretization for the first derivative in Burgers' equation \eqref{eq:Burgers} by an \textit{upwind scheme}. Use the same parameters as before (as specified Table \ref{params}).
+In this task, we want to avoid the \textit{strangeness} that appears when using the code developed in task 1-5. Therefore, note that $u>0$ and replace the central discretization for the first derivative in Burgers' equation \eqref{eq:Burgers} by an \textit{upwind scheme}. Use the same parameters as before (as specified Table \ref{params2}).
 
 We want to find out after what time all cars left the road? Therefore, integrate the car density $\rho$ with respect to $x$ at all time steps. Use the Trapezoidal rule and determine when a threshold value of \texttt{0.001} is reached such that \textit{the road is empty}.
 
