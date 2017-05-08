@@ -54,7 +54,7 @@ Since \eqref{eq:integral_form} holds for every interval, we can conclude that it
 \begin{align*}
  \frac{\partial \rho}{\partial t} + \frac{\partial f}{\partial x}  = 0,
 \end{align*}
-which is a partial differential equation. We next want to model the traffic flow $f$. The flow depends on the car velocity $v(\rho)$ and the negative gradient of the car density:
+which is a partial differential equation. We next want to model the traffic flow $f$: The flow depends on the car velocity $v(\rho)$ and the negative gradient of the car density:
 \begin{align}
 \label{eq:flow}
  f(\rho) = \rho v(\rho) - \nu \frac{\partial \rho}{\partial x}, \quad \nu \in \mathbb{R}_+.
@@ -158,7 +158,7 @@ Next, perform a stability analysis based on the linearized equation. Therefore, 
 \end{align*}
 The Jacobian is then defined as the matrix $J_{ij} = \frac{\partial g_i}{\partial u_j}$. You can base your stability analysis on the Jacobian evaluated at the initial condition \eqref{eq:init_cond} and the stability region of Euler forward.
 
-\textit{Hint: For the minimum eigenvalue of $J(\mathbf{u}^0)$ you might use Gershgorin's theorem.}
+\textit{Hint: For the minimum eigenvalue of $J(\mathbf{u}^0)$ you might use Gershgorin's theorem, or review huiswerk \#4.}
 \section{Simulation}
 Integrate the PDE from $t=0$ to $t_e=5$ using the derived time step $\Delta t$ and $\Delta x$ as defined via Table \ref{params}. Also increase your derived time step by $1\%$ which shows that the estimation is \textit{sharp}. What happens if we run the simulation for a very long time?
 
