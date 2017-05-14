@@ -50,7 +50,7 @@ and, hence,
 \label{eq:integral_form}
  \int_{x_1}^{x_2} \left( \frac{\partial}{\partial t}\rho(x,t) + \frac{\partial}{\partial x} f(x,t) \right) dx = 0.
 \end{align}
-Since \eqref{eq:integral_form} holds for every interval, we can conclude that it holds, 
+Since \eqref{eq:integral_form} holds in every interval, we can conclude that it holds, 
 \begin{align*}
  \frac{\partial \rho}{\partial t} + \frac{\partial f}{\partial x}  = 0,
 \end{align*}
@@ -88,7 +88,7 @@ and boundary conditions,
 \begin{align*}
  u_l(t) = -1, \quad u_r(t) = 0,
 \end{align*}
-are assumed. Note that we consider a Dirichlet boundary condition at the left ($x=0$) boundary and a homogeneous Neumann boundary condition at the end of the street ($x=L$). 
+are assumed. Note that we consider a \textbf{Dirichlet} boundary condition at the left ($x=0$) boundary and a homogeneous \textbf{Neumann} boundary condition at the end of the street ($x=L$). 
 \section{Modeling}
 Find $\alpha$ and $\beta$ such that the equation for the density \eqref{eq:dens} can be transformed into Burgers' equation \eqref{eq:Burgers} for the unknown $u(x,t)$. What do the initial and boundary conditions mean in the physical setting? 
 \section{Spatial discretization and matrix formulation}
@@ -156,16 +156,16 @@ Next, perform a stability analysis based on the linearized equation. Therefore, 
 \begin{align*}
  \dot{u}_i = g_i(\mathbf{u}).
 \end{align*}
-The Jacobian is then defined as the matrix $J_{ij} = \frac{\partial g_i}{\partial u_j}$. You can base your stability analysis on the Jacobian evaluated at the initial condition \eqref{eq:init_cond} and the stability region of Euler forward.
+The Jacobian is then defined as the matrix $[\mathbf{J}]_{i,j} = \frac{\partial g_i}{\partial u_j}$. You can base your stability analysis on the Jacobian evaluated at the initial condition \eqref{eq:init_cond} and the stability region of Euler forward.
 
 \textit{Hint: For the minimum eigenvalue of $J(\mathbf{u}^0)$ you might use Gershgorin's theorem, or review huiswerk \#4.}
 \section{Simulation}
 Integrate the PDE from $t=0$ to $t_e=5$ using the derived time step $\Delta t$ and $\Delta x$ as defined via Table \ref{params1}. Also increase your derived time step by $1\%$ which shows that the estimation is \textit{sharp}. What happens if we run the simulation for a very long time?
 
-\section{Upwind scheme*}
+\section{Upwind scheme}
 Consider the new initial condition 
 \begin{align*}
-% \label{eq:init_cond}
+% \label{eq:init_cond_new}
  u^0(x) = \begin{cases}
            1, &\quad 0 \leq x \leq L/3, \\
            2-(3/L) x, &\quad L/3 \leq x \leq 2L/3,\\
@@ -195,22 +195,25 @@ In this task, we want to avoid the \textit{strangeness} that appears when using 
 
 We want to find out after what time all cars left the road? Therefore, integrate the car density $\rho$ with respect to $x$ at all time steps. Use the Trapezoidal rule and determine when a threshold value of \texttt{0.001} is reached such that \textit{the road is empty}.
 
-% \section{Conservation of cars}
-% The fact that cars entered the road at $x=0$ and all cars left the road at $x=L$ is purely defined by the boundary conditions. Show that the amount of cars is \textit{conserved} in the interior, i.e. show that
+% {\color{red}
+% \section{Analysis of upwind scheme}
+% Consider the inviscid Burgers' equation, that is $\nu = 0$,
+% \begin{align}
+% \label{eq:inviscid}
+%  \frac{\partial u}{\partial t} + \frac{\partial}{\partial x} \left( \frac{1}{2}u^2 \right) = 0.
+% \end{align}
+% The total variation $TV(u)$ is defined as,
 % \begin{align*}
-% \frac{d}{dt} \int_0^L u(x,t) dx
+% TV(u^{n}) := \sum_{i} |u_i^{n} - u_{i-1}^{n}|, \quad \text{where } u_i^n = u(x_i,t^n),
 % \end{align*}
-% only depends on the value of $u$ at the boundary.
+% and it is known that if $TV(u^{n+1}) \leq TV(u^{n})$ then a monotonic initial condition \eqref{eq:init_cond_new} guarantees a monotonic solution $u^n$ and, hence, no \textit{wiggles} can occur. Show that this holds for an upwind discretization of \eqref{eq:inviscid}.
 % 
-% Moreover, a partial differential equation is in \textit{conservative} form if it can be written as,
-% \begin{align*}
-% u_t + f(u)_x = 0.
-% \end{align*}
-% What is $f$ in our case and what must hold such that,
-% \begin{align*}
-% \frac{d}{dt} \int_0^L u(x,t) dx = 0.
-% \end{align*}
-% \textit{Hint: What should exiting cars do such that the number of cars on the road remains constant over time?}
+% \textit{Hint: Structure your proof in the following way:\\
+%        \phantom{\indent Hint: }1. Write-down the stencil for $u_i^{n+1}$ using $\mu:=\Delta t/(2 \Delta x)$ and $a^2-b^2 = (a-b)(a+b)$,\\
+%        \phantom{\indent Hint: }2. Do the same for $u_{i-1}^{n+1}$,\\
+%        \phantom{\indent Hint: }3. Use that $u_i^n \leq \max_i |u_i^n|$, and $\max_i |u_i^n| \frac{\Delta t}{\Delta x} \leq 1$.}
+% }
+
 \section*{Contact and further reading}
 Many information can be found in:
 \begin{itemize}
